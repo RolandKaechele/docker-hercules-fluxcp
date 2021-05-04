@@ -1,12 +1,12 @@
-# Dockerized Flux Control Panel (FluxCP) for rAthena servers.
-This repository is a Docker build of [FluxCP](https://github.com/rathena/FluxCP), an open-source control panel for [rAthena](https://github.com/cmilanf/docker-rathena) server software.
+# Dockerized Flux Control Panel (FluxCP) for hercules servers.
+This repository is a Docker build of [FluxCP](https://github.com/RolandKaechele/FluxCP), an open-source control panel for [hercules] server software.
 
   * Build features:
     * Uses [Alpine Linux](https://hub.docker.com/_/alpine/) as base image.
     * Builds from the master branch of FluxCP's Github repository.
   * Runtime features:
     * Session state is stored in process memory, so this image won't scale easily without proper modification.
-    * It uses the same MySQL database as the rAthena server
+    * It uses the same MySQL database as the hercules server
     * The image leverages [NGINX](https://nginx.org/en/) web server and [PHP-FPM](https://php-fpm.org/) through [supervisord](http://supervisord.org/).
 
 ## File description
@@ -18,7 +18,7 @@ This repository is a Docker build of [FluxCP](https://github.com/rathena/FluxCP)
   * **supervisord.conf**. Supervisord configuration file.
 
 ## Requeriments
-FluxCP requires a [rAthena](https://github.com/cmilanf/docker-rathena) server database in order to work.
+FluxCP requires a hercules server database in order to work.
 The image is based on Alpine Linux and targets to run at Linux x64 architectures.
 
 Footprint is really small.
@@ -35,16 +35,15 @@ Footprint is really small.
   * INSTALLER_PWD. Installer password.
 
 ## Usage
-If you have a readily accesible rAthena's MySQL sever and the rAthena server itself, then usage is straight forward:
+If you have a readily accesible hercules's MySQL sever and the hercules server itself, then usage is straight forward:
 
 ```
-docker run -d --restart=unless-stopped -e MYSQL_HOST="MYSQL host IP" -e MYSQL_USER="MySQL username" -e MYSQL_PWD="MySQL password" -e MYSQL_DB="rAthena"  -e SVR_LOGIN_ADDR="10.0.0.3" -e SVR_CHAR_ADDR="10.0.0.3" -e SVR_MAP_ADDR="10.0.0.3" -e INSTALLER_PWD="p4ss@w0rd" --name rathena-fluxcp cmilanf/docker-rathena-fluxcp:latest
+docker run -d --restart=unless-stopped -e MYSQL_HOST="MYSQL host IP" -e MYSQL_USER="MySQL username" -e MYSQL_PWD="MySQL password" -e MYSQL_DB="hercules"  -e SVR_LOGIN_ADDR="10.0.0.3" -e SVR_CHAR_ADDR="10.0.0.3" -e SVR_MAP_ADDR="10.0.0.3" -e INSTALLER_PWD="p4ss@w0rd" --name hercules-fluxcp cmilanf/docker-hercules-fluxcp:latest
 ```
 
 ## Related projects:
 
-  * [docker-rathena](https://github.com/cmilanf/docker-rathena)
-  * [docker-openkore](https://github.com/cmilanf/docker-openkore)
+  * [docker-hercules](https://github.com/RolandKaechele/docker-hercules-fluxcp)
 
 ## License
 MIT License

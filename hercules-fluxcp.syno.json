@@ -1,0 +1,126 @@
+{
+   "cap_add" : null,
+   "cap_drop" : null,
+   "cmd" : "/usr/bin/supervisord --nodaemon --configuration /etc/supervisord.conf",
+   "cpu_priority" : 50,
+   "devices" : null,
+   "enable_publish_all_ports" : false,
+   "enable_restart_policy" : false,
+   "enabled" : false,
+   "entrypoint_default" : "/usr/local/bin/docker-entrypoint.sh",
+   "env_variables" : [
+      {
+         "key" : "PATH",
+         "value" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      {
+         "key" : "PHP_FPM_USER",
+         "value" : "www"
+      },
+      {
+         "key" : "PHP_FPM_GROUP",
+         "value" : "www"
+      },
+      {
+         "key" : "PHP_FPM_LISTEN_MODE",
+         "value" : "0660"
+      },
+      {
+         "key" : "PHP_MEMORY_LIMIT",
+         "value" : "128M"
+      },
+      {
+         "key" : "PHP_MAX_UPLOAD",
+         "value" : "50M"
+      },
+      {
+         "key" : "PHP_MAX_FILE_UPLOAD",
+         "value" : "200"
+      },
+      {
+         "key" : "PHP_MAX_POST",
+         "value" : "100M"
+      },
+      {
+         "key" : "PHP_DISPLAY_ERRORS",
+         "value" : "On"
+      },
+      {
+         "key" : "PHP_DISPLAY_STARTUP_ERRORS",
+         "value" : "On"
+      },
+      {
+         "key" : "PHP_ERROR_REPORTING",
+         "value" : "E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR"
+      },
+      {
+         "key" : "PHP_CGI_FIX_PATHINFO",
+         "value" : "0"
+      },
+      {
+         "key" : "INSTALLER_PWD",
+         "value" : "ragnarok"
+      },
+      {
+         "key" : "SVR_MAP_ADDR",
+         "value" : "192.168.10.141"
+      },
+      {
+         "key" : "SVR_CHAR_ADDR",
+         "value" : "192.168.10.141"
+      },
+      {
+         "key" : "SVR_LOGIN_ADDR",
+         "value" : "192.168.10.141"
+      },
+      {
+         "key" : "MYSQL_PWD",
+         "value" : "ragnarok"
+      },
+      {
+         "key" : "MYSQL_USER",
+         "value" : "ragnarok"
+      },
+      {
+         "key" : "MYSQL_DB",
+         "value" : "ragnarok"
+      },
+      {
+         "key" : "MYSQL_HOST",
+         "value" : "192.168.10.141"
+      }
+   ],
+   "exporting" : false,
+   "id" : "44e2cb34e6e40fdfa3c6ad945b3e349bbbd72fc9054524804cbe9d5d6efe969a",
+   "image" : "hercules-fluxcp:latest",
+   "is_ddsm" : false,
+   "is_package" : false,
+   "links" : [],
+   "memory_limit" : 0,
+   "name" : "hercules-fluxcp",
+   "network" : [
+      {
+         "driver" : "bridge",
+         "name" : "bridge"
+      }
+   ],
+   "network_mode" : "bridge",
+   "port_bindings" : [
+      {
+         "container_port" : 443,
+         "host_port" : 9443,
+         "type" : "tcp"
+      },
+      {
+         "container_port" : 80,
+         "host_port" : 9080,
+         "type" : "tcp"
+      }
+   ],
+   "privileged" : false,
+   "shortcut" : {
+      "enable_shortcut" : false
+   },
+   "use_host_network" : false,
+   "volume_bindings" : []
+}

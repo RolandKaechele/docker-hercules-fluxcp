@@ -1,14 +1,6 @@
 FROM alpine:3.7
 
-LABEL title="rAthena - FluxCP" \
-  maintainer="Carlos Milán Figueredo" \
-  version="1.0" \
-  url1="https://calnus.com" \
-  url2="http://www.hispamsx.org" \
-  bbs="telnet://bbs.hispamsx.org" \
-  twitter="@cmilanf" \
-  thanksto1="Beatriz Sebastián Peña" \
-  thanksto2="Alberto Marcos González"
+LABEL title="Hercules - FluxCP"
 
 LABEL MYSQL_HOST="Hostname of the MySQL database. Ex: calnus-beta.mysql.database.azure.com." \
   MYSQL_DB="Name of the MySQL database." \
@@ -31,12 +23,13 @@ ENV PHP_FPM_USER=www \
     PHP_ERROR_REPORTING=E_COMPILE_ERROR\|E_RECOVERABLE_ERROR\|E_ERROR\|E_CORE_ERROR \
     PHP_CGI_FIX_PATHINFO=0
 
-RUN mkdir -p /var/www/fluxcp \
+RUN mkdir -p /var/www \
     && mkdir -p /var/log/supervisor \
     && mkdir -p /etc/supervisord.d \
     && apk update \
     && apk add --no-cache nginx php5-fpm php5-pdo php5-pdo_mysql php5-gd gd tidyhtml git nano dos2unix mysql-client bind-tools p7zip supervisor \
-    && git clone https://github.com/rathena/FluxCP.git /var/www/fluxcp \
+    && rm -R /var/www/localhost
+    && git clone https://github.com/RolandKaechele/FluxCP.git /var/www \
     && adduser -D -g 'www' www \
     && chown -R www:www /var/lib/nginx \
     && chown -R www:www /var/www
@@ -59,12 +52,6 @@ RUN sed -i "s|;listen.owner\s*=\s*nobody|listen.owner = ${PHP_FPM_USER}|g" /etc/
 COPY supervisord.conf /etc/
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY docker-entrypoint.sh /usr/local/bin/
-
-# Enable only if you have items.7z present in the build: https://rathena.org/board/files/file/2509-item-images/
-# COPY items.7z /tmp/
-# RUN 7z x /tmp/items.7z -o/var/www/fluxcp \
-#     && chown -R www:www /var/www \
-#     && rm -f /tmp/items.7z
 
 EXPOSE 80/tcp 443/tcp
 
